@@ -1,0 +1,46 @@
+{
+  // BROWSER EXTENSION MANIFEST
+  // This file tells the browser what the extension does and what permissions it needs.
+  // It's like the ID card and permission slip for the extension.
+
+  "manifest_version": 3,
+  "name": "Personal Data Vault",
+  "version": "1.0",
+  "description": "Privacy-first browsing data capture with multi-tab support",
+
+  // Permissions the extension needs to function
+  "permissions": [
+    "tabs",        // Access browser tabs
+    "webNavigation", // Monitor navigation events
+    "storage",     // Store data locally
+    "scripting",   // Run scripts on web pages
+    "activeTab"    // Access the currently active tab
+  ],
+
+  // Which websites the extension can access
+  "host_permissions": [
+    "http://localhost:4000/*",  // Local backend server
+    "<all_urls>"                // All websites for data capture
+  ],
+
+  // Background service worker (runs in background)
+  "background": {
+    "service_worker": "background-scripts/background-service.js"
+  },
+
+  // Content scripts (run on web pages)
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],  // Run on all HTTP/HTTPS pages
+      "js": ["content-scripts/page-monitor.js"], // The script file
+      "run_at": "document_idle",                  // Run when page is loaded
+      "all_frames": false                         // Only main frame, not iframes
+    }
+  ],
+
+  // Popup interface (what shows when you click the extension icon)
+  "action": {
+    "default_popup": "popup-ui/popup-interface.html",  // HTML file for popup
+    "default_title": "Data Vault"                       // Tooltip text
+  }
+}

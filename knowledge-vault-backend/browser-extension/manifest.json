@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Personal Data Vault",
+  "version": "1.0",
+  "description": "Privacy-first browsing data capture with multi-tab support",
+  "permissions": [
+    "tabs",
+    "webNavigation",
+    "storage",
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "http://localhost:4000/*",
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background-scripts/background-service.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content-scripts/page-monitor.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "action": {
+    "default_popup": "popup-ui/popup-interface.html",
+    "default_title": "Data Vault"
+  }
+}
