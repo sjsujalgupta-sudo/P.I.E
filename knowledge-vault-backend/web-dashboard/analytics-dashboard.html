@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!-- ANALYTICS DASHBOARD
+     This is a web-based dashboard for viewing analytics and insights
+     from your collected browsing data. It shows charts, graphs, and
+     allows you to ask questions about your data using AI.
+-->
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Personal Data Vault Analytics</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            font-family: system-ui;
+            background: #0f172a;
+            color: white;
+            margin: 0;
+        }
+
+        header {
+            background: #020617;
+            padding: 20px 40px;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .container {
+            padding: 40px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .card {
+            background: #020617;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #1e293b;
+        }
+
+        h2 {
+            color: #38bdf8;
+        }
+
+        .activity {
+            max-height: 250px;
+            overflow: auto;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <h1>Personal Data Vault</h1>
+    </header>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h2>Ask Your Vault</h2>
+
+            <input id="question" placeholder="Ask something..." style="width:100%;padding:10px">
+
+            <button onclick="askVault()" style="margin-top:10px">Ask</button>
+
+            <div id="answer" style="margin-top:15px"></div>
+
+        </div>
+
+        <div class="grid">
+
+            <div class="card">
+                <h2>Interests</h2>
+                <canvas id="interests"></canvas>
+            </div>
+
+            <div class="card">
+                <h2>Topics</h2>
+                <canvas id="topics"></canvas>
+            </div>
+
+            <div class="card">
+                <h2>Domains</h2>
+                <canvas id="domains"></canvas>
+            </div>
+
+            <div class="card">
+                <h2>Hourly Activity</h2>
+                <canvas id="hourly"></canvas>
+            </div>
+
+            <div class="card">
+                <h2>Sensitivity</h2>
+                <canvas id="sensitivity"></canvas>
+            </div>
+
+            <div class="card">
+                <h2>Knowledge Graph</h2>
+                <pre id="graph"></pre>
+            </div>
+
+            <div class="card">
+                <h2>Recent Activity</h2>
+                <div id="activity" class="activity"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        async function loadAnalytics() {
+
+            const res = await fetch("/analytics")
+            const data = await res.json()
+
+            chart("interests", data.interests)
+            chart("topics", data.topics)
+            chart("domains", data.domains)
+            chart("hourly", data.hourly)
+            chart("sensitivity", data.sensitivity)
+
+        }
+
+        async function loadVault() {
+
+            const res = await fetch("/vault")
+            const data = await res.json()
+
+            const container = document.getElementById("activity")
+
+            container.innerHTML = ""
+
+            data.slice(0, 20).forEach(item => {
+
+                const div = document.createElement("div")
+
+                div.innerHTML = `
+<strong>${item.title}</strong><br>
+<small>${item.url}</small>
+`
+
+                container.appendChild(div)
+
+            })
+
+        }
+
+        async function loadGraph() {
+
+            const res = await fetch("/graph")
+            const data = await res.json()
+
+            document.getElementById("graph").textContent =
+                JSON.stringify(data, null, 2)
+
+        }
+
+        function chart(id, data) {
+
+            const labels = Object.keys(data)
+            const values = Object.values(data)
+
+            new Chart(document.getElementById(id), {
+                type: "bar",
+                data: { labels, datasets: [{ data: values }] },
+                options: { plugins: { legend: { display: false } } }
+            })
+
+        }
+
+        async function askVault() {
+
+            const question = document.getElementById("question").value
+
+            const res = await fetch("/ask", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ question })
+            })
+
+            const data = await res.json()
+
+            document.getElementById("answer").innerText = data.answer
+
+        }
+
+        loadAnalytics()
+        loadVault()
+        loadGraph()
+
+    </script>
+
+</body>
+
+</html>

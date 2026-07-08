@@ -1,0 +1,119 @@
+<!--
+SESSION CONTROL POPUP
+
+This is the user interface that appears when you click the extension icon
+in the browser toolbar. It allows users to start/stop data collection sessions
+and preview their data before exporting.
+
+Features:
+- Start/Stop session buttons
+- Session status indicator
+- Data preview functionality
+- Export options (CSV, PDF, JSON)
+
+For beginners: This is the control panel for the extension. Like the dashboard
+of a car - you use it to control when data collection starts and stops.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 300px;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0f0f0f;
+      color: #f0f0f0;
+      padding: 20px;
+    }
+    h2 { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 3px; }
+    .subtitle { font-size: 11px; color: #666; margin-bottom: 16px; }
+    .status-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .status-badge.active   { background: #1a3a1a; color: #4caf50; }
+    .status-badge.inactive { background: #2a1a1a; color: #f44336; }
+    button {
+      width: 100%;
+      padding: 9px;
+      border: none;
+      border-radius: 7px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 7px;
+      transition: opacity 0.2s;
+    }
+    button:hover:not(:disabled) { opacity: 0.85; }
+    button:disabled { opacity: 0.35; cursor: not-allowed; }
+    #startBtn   { background: #4caf50; color: #fff; }
+    #stopBtn    { background: #f44336; color: #fff; }
+    #previewBtn { background: #1565c0; color: #fff; }
+    .export-label {
+      font-size: 10px;
+      color: #555;
+      margin: 8px 0 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .export-row { display: flex; gap: 6px; margin-bottom: 7px; }
+    .export-row button {
+      flex: 1;
+      background: #1a1a2e;
+      color: #aaa;
+      font-size: 10px;
+      padding: 7px 4px;
+      border: 1px solid #2a2a3e;
+      margin-bottom: 0;
+    }
+    .export-row button:hover:not(:disabled) {
+      background: #2a2a3e; color: #fff;
+    }
+    .session-info {
+      font-size: 9px; color: #444;
+      word-break: break-all;
+      margin-bottom: 8px;
+    }
+    #previewBox {
+      display: none;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 6px;
+      padding: 10px;
+      font-size: 10px;
+      color: #bbb;
+      line-height: 1.7;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h2>🔒 Data Vault</h2>
+  <p class="subtitle">Privacy-first browsing capture</p>
+
+  <div id="statusBadge" class="status-badge inactive">● Inactive</div>
+
+  <button id="startBtn">▶ Start Session</button>
+  <button id="stopBtn" disabled>■ Stop Session</button>
+  <button id="previewBtn" disabled>👁 Preview My Profile</button>
+
+  <div class="session-info" id="sessionInfo"></div>
+
+  <div class="export-label">Export Session</div>
+  <div class="export-row">
+    <button id="exportCsv"  disabled>⬇ CSV</button>
+    <button id="exportPdf"  disabled>⬇ PDF</button>
+    <button id="exportJson" disabled>⬇ JSON</button>
+  </div>
+
+  <div id="previewBox"></div>
+
+  <script src="popup-controller.js"></script>
+</body>
+</html>

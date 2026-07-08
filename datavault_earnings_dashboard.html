@@ -1,0 +1,675 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
+
+  .dv-root {
+    background: #0a0a0f;
+    min-height: 100vh;
+    padding: 28px 24px;
+    font-family: 'DM Sans', sans-serif;
+    color: #e8e8f0;
+    box-sizing: border-box;
+  }
+
+  .glass {
+    background: rgba(255,255,255,0.04);
+    border: 0.5px solid rgba(255,255,255,0.09);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+  }
+
+  .glass-accent {
+    background: rgba(255,255,255,0.06);
+    border: 0.5px solid rgba(255,255,255,0.13);
+    border-radius: 16px;
+  }
+
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  .logo-text {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .logo-dot { color: #7ee8a2; }
+
+  .top-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .pill {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.2px;
+  }
+
+  .pill-live {
+    background: rgba(126,232,162,0.12);
+    border: 0.5px solid rgba(126,232,162,0.3);
+    color: #7ee8a2;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .live-dot {
+    width: 5px; height: 5px;
+    background: #7ee8a2;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%,100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .pill-period {
+    background: rgba(255,255,255,0.06);
+    border: 0.5px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+  }
+
+  .pill-period.active {
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.9);
+    border-color: rgba(255,255,255,0.18);
+  }
+
+  .hero-card {
+    padding: 28px 28px 24px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-glow {
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(126,232,162,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 10px;
+  }
+
+  .hero-amount {
+    font-size: 52px;
+    font-weight: 300;
+    letter-spacing: -2px;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 6px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .hero-amount span {
+    font-size: 28px;
+    color: rgba(255,255,255,0.4);
+    font-weight: 300;
+  }
+
+  .hero-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 20px;
+  }
+
+  .hero-change {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #7ee8a2;
+    background: rgba(126,232,162,0.1);
+    border: 0.5px solid rgba(126,232,162,0.2);
+    border-radius: 20px;
+    padding: 3px 10px;
+  }
+
+  .sparkline-wrap {
+    margin-top: 20px;
+    height: 56px;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .stat-card {
+    padding: 18px 20px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .stat-value {
+    font-size: 22px;
+    font-weight: 400;
+    color: #fff;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: -0.5px;
+  }
+
+  .stat-sub {
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+    margin-top: 4px;
+  }
+
+  .stat-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 2px 7px;
+    border-radius: 10px;
+    margin-top: 6px;
+  }
+
+  .badge-green {
+    background: rgba(126,232,162,0.12);
+    color: #7ee8a2;
+    border: 0.5px solid rgba(126,232,162,0.2);
+  }
+
+  .badge-amber {
+    background: rgba(255,185,80,0.1);
+    color: #ffb950;
+    border: 0.5px solid rgba(255,185,80,0.2);
+  }
+
+  .badge-blue {
+    background: rgba(100,160,255,0.1);
+    color: #64a0ff;
+    border: 0.5px solid rgba(100,160,255,0.2);
+  }
+
+  .score-card {
+    padding: 20px 22px;
+    margin-bottom: 16px;
+  }
+
+  .score-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+
+  .score-ring-wrap {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .score-info { flex: 1; }
+
+  .score-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 4px;
+  }
+
+  .score-desc {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    line-height: 1.5;
+  }
+
+  .bar-section {
+    margin-top: 4px;
+  }
+
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .bar-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    width: 60px;
+    flex-shrink: 0;
+  }
+
+  .bar-track {
+    flex: 1;
+    height: 3px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 1s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .bar-pct {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    width: 28px;
+    text-align: right;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .heatmap-card {
+    padding: 20px 22px;
+    margin-bottom: 16px;
+  }
+
+  .heatmap-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    margin-top: 14px;
+  }
+
+  .heatmap-day {
+    aspect-ratio: 1;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+    transition: all 0.2s;
+    cursor: default;
+  }
+
+  .payout-card {
+    padding: 20px 22px;
+    margin-bottom: 16px;
+  }
+
+  .payout-bar-track {
+    height: 6px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 3px;
+    margin: 12px 0 8px;
+    overflow: hidden;
+  }
+
+  .payout-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #7ee8a2, #64d68a);
+    transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .payout-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    font-family: 'DM Mono', monospace;
+  }
+
+  .payout-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+  }
+
+  .payout-cta-text {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+  }
+
+  .btn-withdraw {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 10px;
+    background: rgba(126,232,162,0.12);
+    border: 0.5px solid rgba(126,232,162,0.25);
+    color: #7ee8a2;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .btn-withdraw:hover {
+    background: rgba(126,232,162,0.2);
+  }
+
+  .forecast-card {
+    padding: 20px 22px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .forecast-left { flex: 1; }
+
+  .forecast-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .forecast-amount {
+    font-size: 28px;
+    font-weight: 300;
+    font-family: 'DM Mono', monospace;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+
+  .forecast-desc {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    margin-top: 4px;
+  }
+
+  .forecast-chart {
+    width: 100px;
+    height: 52px;
+    flex-shrink: 0;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.25);
+    margin-bottom: 10px;
+  }
+
+  .period-tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+</style>
+
+<div class="dv-root">
+  <h2 class="sr-only">DataVault earnings dashboard showing weekly data income, quality score, category breakdown, and payout progress</h2>
+
+  <div class="top-bar">
+    <div class="logo-text">Data<span class="logo-dot">Vault</span></div>
+    <div class="top-right">
+      <div class="pill pill-live">
+        <div class="live-dot"></div>
+        Live
+      </div>
+    </div>
+  </div>
+
+  <div class="period-tabs">
+    <div class="pill pill-period active" onclick="setPeriod(this,'week')">Week</div>
+    <div class="pill pill-period" onclick="setPeriod(this,'month')">Month</div>
+    <div class="pill pill-period" onclick="setPeriod(this,'all')">All time</div>
+  </div>
+
+  <div class="glass hero-card">
+    <div class="hero-bg-glow"></div>
+    <div class="hero-label">Your data earned</div>
+    <div class="hero-amount" id="hero-amt"><span>$</span><span id="hero-num">4.20</span></div>
+    <div class="hero-sub" id="hero-sub">this week · updated just now</div>
+    <div class="hero-change" id="hero-change">↑ 18% vs last week</div>
+    <div class="sparkline-wrap">
+      <canvas id="sparkline" width="600" height="56"></canvas>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="glass-accent stat-card">
+      <div class="stat-label">Today</div>
+      <div class="stat-value" id="stat-today">$0.61</div>
+      <div class="stat-sub">7 sessions</div>
+      <div class="stat-badge badge-green" id="badge-today">+12%</div>
+    </div>
+    <div class="glass-accent stat-card">
+      <div class="stat-label">Monthly</div>
+      <div class="stat-value" id="stat-month">$18.40</div>
+      <div class="stat-sub">on track</div>
+      <div class="stat-badge badge-blue" id="badge-month">forecast</div>
+    </div>
+    <div class="glass-accent stat-card">
+      <div class="stat-label">All time</div>
+      <div class="stat-value" id="stat-all">$91.75</div>
+      <div class="stat-sub">since Jan 2025</div>
+      <div class="stat-badge badge-amber">lifetime</div>
+    </div>
+  </div>
+
+  <div class="glass payout-card">
+    <div class="section-label">Payout progress</div>
+    <div style="display:flex; justify-content:space-between; align-items:baseline;">
+      <div style="font-size:13px; color:rgba(255,255,255,0.7);">$<span id="payout-current">17.70</span> of $20.00</div>
+      <div style="font-size:11px; color:#7ee8a2; font-family:'DM Mono',monospace;">$<span id="payout-left">2.30</span> to go</div>
+    </div>
+    <div class="payout-bar-track">
+      <div class="payout-bar-fill" id="payout-bar" style="width:88.5%"></div>
+    </div>
+    <div class="payout-labels">
+      <span>$0</span>
+      <span>$10</span>
+      <span>$20</span>
+    </div>
+    <div class="payout-cta">
+      <div class="payout-cta-text">Browse ~3 more sessions to unlock withdrawal</div>
+      <button class="btn-withdraw">Withdraw</button>
+    </div>
+  </div>
+
+  <div class="glass score-card">
+    <div class="score-header">
+      <div>
+        <div class="section-label">Data quality</div>
+      </div>
+      <div style="font-size:28px; font-family:'DM Mono',monospace; font-weight:300; color:#7ee8a2;" id="score-num">87</div>
+    </div>
+    <div class="score-ring-wrap">
+      <div class="score-info">
+        <div class="score-title" id="score-title">High quality · buyers pay premium</div>
+        <div class="score-desc" id="score-desc">Browse more on weekends to maximise earnings. Consistent activity = higher data value.</div>
+      </div>
+    </div>
+    <div class="bar-section" style="margin-top:16px;">
+      <div class="bar-row">
+        <div class="bar-label">Tech</div>
+        <div class="bar-track"><div class="bar-fill" style="width:78%; background:#7ee8a2;"></div></div>
+        <div class="bar-pct">78%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">News</div>
+        <div class="bar-track"><div class="bar-fill" style="width:52%; background:#64a0ff;"></div></div>
+        <div class="bar-pct">52%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Shopping</div>
+        <div class="bar-track"><div class="bar-fill" style="width:38%; background:#ffb950;"></div></div>
+        <div class="bar-pct">38%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Finance</div>
+        <div class="bar-track"><div class="bar-fill" style="width:21%; background:#c084fc;"></div></div>
+        <div class="bar-pct">21%</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="glass heatmap-card">
+    <div class="section-label">Activity · this week</div>
+    <div class="heatmap-grid" id="heatmap"></div>
+    <div style="font-size:11px; color:rgba(255,255,255,0.2); margin-top:10px;">
+      Darker = more active · missed days lose potential earnings
+    </div>
+  </div>
+
+  <div class="glass forecast-card">
+    <div class="forecast-left">
+      <div class="forecast-label">Monthly forecast</div>
+      <div class="forecast-amount" id="forecast-amt">$18.40</div>
+      <div class="forecast-desc" id="forecast-desc">At current pace · ends May 31</div>
+    </div>
+    <canvas class="forecast-chart" id="forecast-chart" width="100" height="52"></canvas>
+  </div>
+
+</div>
+
+<script>
+const PERIODS = {
+  week:  { hero:'4.20', sub:'this week · updated just now', change:'↑ 18% vs last week', today:'$0.61', month:'$18.40', all:'$91.75', score:87, scoreTitle:'High quality · buyers pay premium', scoreDesc:'Browse more on weekends to maximise earnings.', pCurrent:'17.70', pLeft:'2.30', pPct:88.5, forecast:'$18.40', fDesc:'At current pace · ends May 31', spark:[1.2,0.8,1.8,2.4,3.1,3.6,4.2] },
+  month: { hero:'18.40', sub:'this month · May 2026', change:'↑ 23% vs April', today:'$0.61', month:'$18.40', all:'$91.75', score:91, scoreTitle:'Excellent · top 12% of users', scoreDesc:'Your data profile is highly sought this month. Keep it up.', pCurrent:'18.40', pLeft:'0', pPct:100, forecast:'$18.40', fDesc:'Month nearly complete', spark:[2,4,6,8,10,14,18.4] },
+  all:   { hero:'91.75', sub:'all time · Jan 2025 – now', change:'↑ steady growth', today:'$0.61', month:'$18.40', all:'$91.75', score:89, scoreTitle:'Consistent · reliable data source', scoreDesc:'Long-term activity makes your data more valuable to buyers.', pCurrent:'91.75', pLeft:'0', pPct:100, forecast:'$110+', fDesc:'Projected year-end at current rate', spark:[5,14,22,38,55,70,91.75] }
+};
+
+let activePeriod = 'week';
+
+function setPeriod(el, key) {
+  document.querySelectorAll('.pill-period').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  activePeriod = key;
+  updateDashboard(PERIODS[key]);
+}
+
+function updateDashboard(d) {
+  document.getElementById('hero-num').textContent = d.hero;
+  document.getElementById('hero-sub').textContent = d.sub;
+  document.getElementById('hero-change').textContent = d.change;
+  document.getElementById('stat-today').textContent = d.today;
+  document.getElementById('stat-month').textContent = d.month;
+  document.getElementById('stat-all').textContent = d.all;
+  document.getElementById('score-num').textContent = d.score;
+  document.getElementById('score-title').textContent = d.scoreTitle;
+  document.getElementById('score-desc').textContent = d.scoreDesc;
+  document.getElementById('payout-current').textContent = d.pCurrent;
+  document.getElementById('payout-left').textContent = d.pLeft === '0' ? 'threshold met' : d.pLeft;
+  document.getElementById('payout-bar').style.width = Math.min(d.pPct,100) + '%';
+  document.getElementById('forecast-amt').textContent = d.forecast;
+  document.getElementById('forecast-desc').textContent = d.fDesc;
+  drawSparkline(d.spark);
+  drawForecast(d.spark);
+}
+
+function drawSparkline(data) {
+  const c = document.getElementById('sparkline');
+  const ctx = c.getContext('2d');
+  c.width = c.offsetWidth * 2 || 600;
+  c.height = 112;
+  ctx.clearRect(0,0,c.width,c.height);
+  const W = c.width, H = c.height;
+  const min = Math.min(...data), max = Math.max(...data);
+  const pts = data.map((v,i) => ({
+    x: (i/(data.length-1))*W,
+    y: H - ((v-min)/(max-min||1))*(H*0.75) - H*0.1
+  }));
+  const grad = ctx.createLinearGradient(0,0,0,H);
+  grad.addColorStop(0,'rgba(126,232,162,0.18)');
+  grad.addColorStop(1,'rgba(126,232,162,0)');
+  ctx.beginPath();
+  ctx.moveTo(pts[0].x, pts[0].y);
+  pts.forEach((p,i) => { if(i>0) ctx.lineTo(p.x,p.y); });
+  ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
+  ctx.fillStyle = grad; ctx.fill();
+  ctx.beginPath();
+  ctx.moveTo(pts[0].x, pts[0].y);
+  pts.forEach((p,i) => { if(i>0) ctx.lineTo(p.x,p.y); });
+  ctx.strokeStyle = '#7ee8a2'; ctx.lineWidth = 2.5;
+  ctx.stroke();
+  const last = pts[pts.length-1];
+  ctx.beginPath();
+  ctx.arc(last.x, last.y, 5, 0, Math.PI*2);
+  ctx.fillStyle = '#7ee8a2'; ctx.fill();
+}
+
+function drawForecast(data) {
+  const c = document.getElementById('forecast-chart');
+  const ctx = c.getContext('2d');
+  c.width = 200; c.height = 104;
+  ctx.clearRect(0,0,c.width,c.height);
+  const W = c.width, H = c.height;
+  const min = 0, max = Math.max(...data)*1.1;
+  const pts = data.map((v,i) => ({
+    x: (i/(data.length-1))*W,
+    y: H - (v/max)*H*0.85 - 4
+  }));
+  ctx.beginPath();
+  ctx.moveTo(pts[0].x, pts[0].y);
+  pts.forEach((p,i) => { if(i>0) ctx.lineTo(p.x,p.y); });
+  ctx.strokeStyle = 'rgba(100,160,255,0.7)'; ctx.lineWidth = 2; ctx.stroke();
+  pts.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 2.5, 0, Math.PI*2);
+    ctx.fillStyle = 'rgba(100,160,255,0.9)'; ctx.fill();
+  });
+}
+
+function buildHeatmap() {
+  const days = ['M','T','W','T','F','S','S'];
+  const activity = [0.9, 0.6, 0.85, 0.1, 0.75, 0.3, 0.5];
+  const h = document.getElementById('heatmap');
+  h.innerHTML = '';
+  days.forEach((d,i) => {
+    const a = activity[i];
+    const el = document.createElement('div');
+    el.className = 'heatmap-day';
+    const alpha = 0.04 + a*0.55;
+    const g = Math.round(80 + a*152);
+    el.style.background = i===3
+      ? 'rgba(255,100,100,0.08)'
+      : `rgba(${Math.round(30+a*30)}, ${g}, ${Math.round(60+a*80)}, ${alpha})`;
+    el.style.border = i===3
+      ? '0.5px solid rgba(255,100,100,0.2)'
+      : `0.5px solid rgba(126,232,162,${a*0.15})`;
+    el.textContent = d;
+    if(i===3) el.style.color = 'rgba(255,100,100,0.5)';
+    h.appendChild(el);
+  });
+}
+
+setTimeout(() => {
+  drawSparkline(PERIODS.week.spark);
+  drawForecast(PERIODS.week.spark);
+  buildHeatmap();
+}, 100);
+</script>
