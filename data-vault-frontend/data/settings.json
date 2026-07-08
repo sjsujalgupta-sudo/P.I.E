@@ -1,0 +1,12 @@
+{
+  "theme": "dark",
+  "accentColor": "violet",
+  "fontSize": "large",
+  "animationsEnabled": true,
+  "autoCapture": true,
+  "includeSummaries": true,
+  "includeSearchQueries": true,
+  "sensitivityFilter": "all",
+  "weeklyDigest": true,
+  "contractAlerts": true
+}

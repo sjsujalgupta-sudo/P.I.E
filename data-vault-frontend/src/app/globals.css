@@ -1,0 +1,701 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Apple System Dark — Deep & Fluid */
+  --color-background: rgb(10 10 11);
+  --color-foreground: rgb(255 255 255);
+  
+  /* Liquid Glass Core — Dark Mode */
+  --color-liquid-bg: rgba(255 255 255 / 0.08);
+  --color-liquid-border: rgba(255 255 255 / 0.18);
+  --color-liquid-highlight: rgba(255 255 255 / 0.45);
+  --color-liquid-shadow: rgba(0 0 0 / 0.3);
+  --color-dropdown-bg: rgba(15, 15, 20, 0.94);
+
+  /* Theme-aware surfaces */
+  --color-surface-hover: rgba(255 255 255 / 0.06);
+  --color-surface-border: rgba(255 255 255 / 0.1);
+  --color-surface-elevated: rgba(255 255 255 / 0.04);
+  
+  /* Accent Colors */
+  --color-accent: rgb(167 139 250);
+  --color-accent-dim: rgba(167 139 250 / 0.15);
+  --color-cyan: rgb(34 211 238);
+  --color-cyan-dim: rgba(34 211 238 / 0.15);
+  --color-emerald: rgb(52 211 153);
+  --color-emerald-dim: rgba(52 211 153 / 0.15);
+
+  /* Semantic */
+  --color-danger: rgb(255 69 58);
+  --color-danger-dim: rgba(255 69 58 / 0.15);
+
+  /* Text Colors */
+  --color-label: rgb(255 255 255);
+  --color-label-secondary: rgb(174 174 178);
+  --color-label-tertiary: rgb(142 142 147);
+  --color-separator: rgba(255 255 255 / 0.08);
+  
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, sans-serif;
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  
+  body {
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    transition: background 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 100px; }
+}
+
+/* ============================================
+   LIQUID GLASS 2026 MATERIAL
+   ============================================ */
+
+/* ── Metallic Materials ────────────────────── */
+@theme inline {
+  --color-silver: #c0c0c8;
+  --color-silver-bright: #e8e8f0;
+  --color-titanium: #7a7a85;
+  --color-platinum: #e5e5ed;
+  --color-chromium: #fcfcfc;
+  
+  --metal-silver: linear-gradient(135deg, #f0f0f5 0%, #a0a0b0 45%, #c0c0c8 55%, #f5f5fa 100%);
+  --metal-titanium: linear-gradient(135deg, #9a9a9e 0%, #48484a 45%, #636366 55%, #9a9a9e 100%);
+  --metal-platinum: linear-gradient(135deg, #ffffff 0%, #d1d1d6 45%, #e5e5ea 55%, #ffffff 100%);
+  --metal-chromium: linear-gradient(135deg, #ffffff 0%, #8e8e93 30%, #ffffff 50%, #8e8e93 70%, #ffffff 100%);
+}
+
+.metal-silver { background: var(--metal-silver); }
+.metal-titanium { background: var(--metal-titanium); }
+.metal-platinum { background: var(--metal-platinum); }
+.metal-chromium { background: var(--metal-chromium); }
+
+.metal-text-silver {
+  background: var(--metal-silver);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1));
+}
+
+.metal-text-titanium {
+  background: var(--metal-titanium);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.metal-text-platinum {
+  background: var(--metal-platinum);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 2px rgba(255,255,255,0.1));
+}
+
+.metal-border-silver, .metal-border-titanium, .metal-border-platinum, .metal-border-chromium {
+  position: relative;
+  border: none !important;
+}
+
+.metal-border-silver::before, 
+.metal-border-titanium::before, 
+.metal-border-platinum::before, 
+.metal-border-chromium::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: var(--metal-silver);
+  -webkit-mask: 
+     linear-gradient(#fff 0 0) content-box, 
+     linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.metal-border-titanium::before { background: var(--metal-titanium); }
+.metal-border-platinum::before { background: var(--metal-platinum); }
+.metal-border-chromium::before { 
+  background: var(--metal-chromium); 
+  padding: 1.5px;
+}
+
+/* Brushed Metal Texture Effect */
+.metal-brushed {
+  position: relative;
+}
+.metal-brushed::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 0px,
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.metal-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.metal-shine::before {
+  content: "";
+  position: absolute;
+  top: -150%;
+  left: -150%;
+  width: 300%;
+  height: 300%;
+  background: linear-gradient(
+    45deg,
+    transparent 45%,
+    rgba(255, 255, 255, 0.1) 48%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.1) 52%,
+    transparent 55%
+  );
+  transform: rotate(0deg);
+  animation: metal-shine 6s infinite linear;
+  pointer-events: none;
+}
+
+@keyframes metal-shine {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(0deg); }
+  20% { transform: translateX(100%) translateY(100%) rotate(0deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(0deg); }
+}
+
+
+.liquid-glass, .glass, .shell-glass, .glass-sm {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-liquid-bg);
+  backdrop-filter: blur(80px) saturate(280%);
+  -webkit-backdrop-filter: blur(80px) saturate(280%);
+  border: 1px solid var(--color-liquid-border);
+  border-radius: 40px;
+  box-shadow:
+    0 32px 80px var(--color-liquid-shadow),
+    inset 0 1px 1px var(--color-liquid-highlight),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.05);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+
+/* Inner Glow Effect */
+.liquid-glass::before, .glass::before, .shell-glass::before, .glass-sm::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ============================================
+   UI COMPONENT UTILITIES
+   ============================================ */
+
+.animate-fluid {
+  animation: fluid-blob 25s ease-in-out infinite;
+}
+
+@keyframes fluid-blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(40px, -60px) scale(1.15); }
+  66% { transform: translate(-30px, 30px) scale(0.9); }
+}
+
+/* Glass material aliases — properties handled by combined selectors above */
+.glass { border-radius: 18px; }
+.glass-sm { border-radius: 14px; backdrop-filter: blur(40px) saturate(200%); }
+
+/* ── Page Hero Card Material ── */
+.page-hero-card {
+  background: var(--color-liquid-bg);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+}
+
+
+
+.glass-dropdown {
+  background: var(--color-dropdown-bg);
+  backdrop-filter: blur(64px) saturate(210%);
+  -webkit-backdrop-filter: blur(64px) saturate(210%);
+  border: 1px solid var(--color-separator);
+  border-radius: 20px;
+  box-shadow: 
+    0 12px 48px var(--color-liquid-shadow),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+
+
+.glass-hover:hover {
+  background: var(--color-surface-hover);
+  border-color: var(--color-surface-border);
+}
+
+.theme-option {
+  @apply flex items-center gap-3 px-3 py-3 rounded-xl transition-all duration-200 text-label-secondary;
+}
+
+.theme-option:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-label);
+}
+
+.theme-option-active {
+  background: var(--color-accent-dim);
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+}
+
+
+
+/* ── Typography & UI Utilities ── */
+.text-headline {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-label);
+}
+
+.text-title {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-label);
+}
+
+.text-body {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-label-secondary);
+}
+
+.text-footnote {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-label-tertiary);
+}
+
+.input-glass {
+  width: 100%;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-separator);
+  color: var(--color-label);
+  transition: all 0.2s ease;
+}
+
+
+
+.input-glass:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 4px var(--color-accent-dim);
+}
+
+.badge-low { @apply px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-emerald-dim text-emerald border border-emerald/20; }
+.badge-medium { @apply px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-amber-400/15 text-amber-500 border border-amber-400/20; }
+.badge-high { @apply px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-rose-400/15 text-rose-500 border border-rose-400/20; }
+
+.btn-success { @apply px-4 py-2 rounded-xl bg-emerald text-white font-semibold hover:bg-emerald/90 transition-all; }
+.btn-danger { @apply px-4 py-2 rounded-xl bg-danger text-white font-semibold hover:bg-danger/90 transition-all; }
+.btn-secondary { @apply px-4 py-2 rounded-xl bg-surface-elevated text-label font-semibold border border-surface-border hover:bg-surface-hover transition-all; }
+
+.skeleton {
+  @apply animate-pulse bg-surface-elevated rounded-md;
+}
+
+.icon-container {
+  @apply flex items-center justify-center rounded-xl border transition-all;
+}
+
+.icon-container-emerald { @apply bg-emerald-dim text-emerald border-emerald/20; }
+.icon-container-violet { @apply bg-accent-dim text-accent border-accent/20; }
+
+
+/* ============================================
+   SIDEBAR — APPLE LIQUID GLASS SYSTEM
+   ============================================ */
+
+/* ── Shell / Frosted Pane ── */
+.sidebar-shell {
+  background: rgba(12, 12, 16, 0.72);
+  backdrop-filter: blur(72px) saturate(180%);
+  -webkit-backdrop-filter: blur(72px) saturate(180%);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    1px 0 0 rgba(255, 255, 255, 0.06) inset,
+    4px 0 24px rgba(0, 0, 0, 0.35);
+}
+
+
+
+/* ── Ambient Glow Orbs (decorative depth) ── */
+.sidebar-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(48px);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.sidebar-orb-top {
+  width: 180px;
+  height: 180px;
+  top: -40px;
+  left: -40px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.5), transparent 70%);
+}
+
+.sidebar-orb-bottom {
+  width: 160px;
+  height: 160px;
+  bottom: 60px;
+  right: -30px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.35), transparent 70%);
+}
+
+
+
+/* ── Dividers ── */
+.sidebar-divider-bottom {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.sidebar-divider-top {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* ── Logo icon container ── */
+.sidebar-icon-logo {
+  background: rgba(139, 92, 246, 0.18);
+  border: 1px solid rgba(139, 92, 246, 0.28);
+}
+
+/* ── Text tokens ── */
+.sidebar-text-primary {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.sidebar-text-secondary {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.sidebar-text-tertiary {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* ── Icon default state ── */
+.sidebar-icon-default {
+  color: rgba(255, 255, 255, 0.42);
+}
+
+/* ── Mobile bottom tab bar ── */
+.mobile-tab-bar {
+  background: rgba(12, 12, 16, 0.78);
+  backdrop-filter: blur(60px) saturate(180%);
+  -webkit-backdrop-filter: blur(60px) saturate(180%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 -1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 -8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Settings specific glass effects ── */
+
+.settings-glass-card {
+  background: rgba(15, 15, 20, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+.settings-selection-glow {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3), inset 0 0 12px rgba(255, 255, 255, 0.05);
+}
+
+.group:hover .group-hover\:sidebar-text-primary {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* ── Consciousness map: active-path edge pulse ──────────────────────────── */
+/* Replaces Framer Motion strokeOpacity animation on <path> elements.        */
+/* Using CSS avoids the motion.path ↔ path element-type swap that caused     */
+/* edges to flash invisible on every activeNodeId change.                    */
+@keyframes gbr-edge-pulse {
+  0%, 100% { stroke-opacity: 0.45; }
+  50%       { stroke-opacity: 1;    }
+}
+
+@keyframes gbr-edge-flow {
+  from { stroke-dashoffset: 20; }
+  to   { stroke-dashoffset: 0; }
+}
+/* ── Cinematic UI Utilities ── */
+.aurora-bg {
+  background: 
+    radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(34, 211, 238, 0.1) 0px, transparent 50%);
+}
+
+.volumetric-light {
+  position: relative;
+  overflow: hidden;
+}
+
+.volumetric-light::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 25%,
+    transparent 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.spatial-depth {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.cinematic-shadow {
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* ============================================
+   STEALTH LIQUID DOCK — MINIMALIST EVOLUTION
+   ============================================ */
+
+/* ── Wrapper ── */
+.dynamic-island-wrapper {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.dynamic-island-wrapper > * {
+  pointer-events: auto;
+}
+
+/* ── The Launch Pad (Collapsed Pill) ── */
+.dynamic-island-pill {
+  position: relative;
+  height: 48px;
+  padding: 0 16px 0 12px;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  
+  /* Stealth State: Highly transparent */
+  background: rgba(15, 15, 22, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dynamic-island-pill:hover {
+  background: rgba(15, 15, 22, 0.85);
+  backdrop-filter: blur(40px) saturate(220%);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  transform: scale(1.05) translateY(-4px);
+}
+
+/* Navigate Text */
+.dynamic-island-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.dynamic-island-pill:hover .dynamic-island-label {
+  color: #fff;
+}
+
+/* Rocket Launch Keyframes */
+@keyframes rocket-exhaust {
+  0% { transform: translateY(0) scale(1); opacity: 0.8; }
+  100% { transform: translateY(10px) scale(0.5); opacity: 0; }
+}
+
+.rocket-trail {
+  position: absolute;
+  bottom: -4px;
+  width: 4px;
+  height: 8px;
+  background: linear-gradient(to bottom, var(--color-accent), transparent);
+  border-radius: 2px;
+  animation: rocket-exhaust 0.2s linear infinite;
+}
+
+/* Minimal Energy Glow */
+.dynamic-island-glow {
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    rgba(167, 139, 250, 0.3) 0%,
+    transparent 70%
+  );
+  filter: blur(15px);
+  opacity: 0.4;
+  transition: opacity 0.5s ease;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.dynamic-island-pill:hover .dynamic-island-glow {
+  opacity: 0.9;
+}
+
+/* ── The Expanded Dock ── */
+.dynamic-island-expanded {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(10, 10, 15, 0.85);
+  backdrop-filter: blur(80px) saturate(250%);
+  -webkit-backdrop-filter: blur(80px) saturate(250%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+/* Specular Glow */
+.dynamic-island-inner-glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Core Trigger Button */
+.dynamic-island-close-btn {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-accent);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+.dynamic-island-close-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: scale(1.1);
+}
+
+/* Nav Item Evolution */
+.dynamic-island-nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+.dynamic-island-nav-item:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.dynamic-island-nav-item.active {
+  color: var(--color-accent);
+  background: var(--color-accent-dim);
+}
+
+/* Active Highlight (Top Bar) */
+.dynamic-island-active-dot {
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--color-accent);
+  box-shadow: 0 0 12px var(--color-accent);
+}
+
+/* Stealth Tooltip */
+.dynamic-island-tooltip {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: rgba(10, 10, 15, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  pointer-events: none;
+}

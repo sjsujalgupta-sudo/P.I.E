@@ -1,0 +1,252 @@
+[
+    {
+        "name": "Sirius",
+        "ra": 6.75,
+        "dec": -16.7,
+        "mag": -1.46,
+        "color": "#c8e2ff",
+        "dist": "8.6 ly",
+        "spectral": "A1V",
+        "info": "Brightest star in the night sky."
+    },
+    {
+        "name": "Canopus",
+        "ra": 6.39,
+        "dec": -52.69,
+        "mag": -0.74,
+        "color": "#fff4e8",
+        "dist": "310 ly",
+        "spectral": "A9II",
+        "info": "Second brightest star, supergiant."
+    },
+    {
+        "name": "Rigil Kentaurus",
+        "ra": 14.66,
+        "dec": -60.83,
+        "mag": -0.27,
+        "color": "#fff4e8",
+        "dist": "4.3 ly",
+        "spectral": "G2V",
+        "info": "Closest star system to Earth."
+    },
+    {
+        "name": "Arcturus",
+        "ra": 14.26,
+        "dec": 19.18,
+        "mag": -0.05,
+        "color": "#ffd2a1",
+        "dist": "37 ly",
+        "spectral": "K1.5III",
+        "info": "Brightest star in Northern Hemisphere."
+    },
+    {
+        "name": "Vega",
+        "ra": 18.61,
+        "dec": 38.78,
+        "mag": 0.03,
+        "color": "#c8e2ff",
+        "dist": "25 ly",
+        "spectral": "A0V",
+        "info": "Former North Star, bright blue-white."
+    },
+    {
+        "name": "Capella",
+        "ra": 5.27,
+        "dec": 45.99,
+        "mag": 0.08,
+        "color": "#fff4e8",
+        "dist": "43 ly",
+        "spectral": "G3III",
+        "info": "A quadruple star system."
+    },
+    {
+        "name": "Rigel",
+        "ra": 5.24,
+        "dec": -8.2,
+        "mag": 0.13,
+        "color": "#c8e2ff",
+        "dist": "860 ly",
+        "spectral": "B8Ia",
+        "info": "Blue supergiant in Orion."
+    },
+    {
+        "name": "Procyon",
+        "ra": 7.65,
+        "dec": 5.22,
+        "mag": 0.34,
+        "color": "#fff4e8",
+        "dist": "11.4 ly",
+        "spectral": "F5IV-V",
+        "info": "Eighth brightest star in the sky."
+    },
+    {
+        "name": "Achernar",
+        "ra": 1.63,
+        "dec": -57.24,
+        "mag": 0.46,
+        "color": "#c8e2ff",
+        "dist": "139 ly",
+        "spectral": "B6Vep",
+        "info": "Highly flattened due to rapid spin."
+    },
+    {
+        "name": "Betelgeuse",
+        "ra": 5.91,
+        "dec": 7.4,
+        "mag": 0.5,
+        "color": "#ffb56c",
+        "dist": "640 ly",
+        "spectral": "M1-M2Ia-ab",
+        "info": "Red supergiant near the end of its life."
+    },
+    {
+        "name": "Hadar",
+        "ra": 14.06,
+        "dec": -60.37,
+        "mag": 0.61,
+        "color": "#c8e2ff",
+        "dist": "390 ly",
+        "spectral": "B1III",
+        "info": "Part of the Southern Pointer."
+    },
+    {
+        "name": "Altair",
+        "ra": 19.84,
+        "dec": 8.86,
+        "mag": 0.76,
+        "color": "#f2f2ff",
+        "dist": "16.7 ly",
+        "spectral": "A7V",
+        "info": "Rapid rotator with a flattened pole."
+    },
+    {
+        "name": "Acrux",
+        "ra": 12.44,
+        "dec": -63.09,
+        "mag": 0.76,
+        "color": "#c8e2ff",
+        "dist": "320 ly",
+        "spectral": "B0.5IV",
+        "info": "Southernmost star of the Southern Cross."
+    },
+    {
+        "name": "Aldebaran",
+        "ra": 4.59,
+        "dec": 16.5,
+        "mag": 0.86,
+        "color": "#ffb56c",
+        "dist": "65 ly",
+        "spectral": "K5III",
+        "info": "The fiery eye of Taurus the Bull."
+    },
+    {
+        "name": "Antares",
+        "ra": 16.49,
+        "dec": -26.43,
+        "mag": 0.96,
+        "color": "#ffb56c",
+        "dist": "550 ly",
+        "spectral": "M1.5Iab",
+        "info": "Heart of the Scorpion, rival of Mars."
+    },
+    {
+        "name": "Spica",
+        "ra": 13.41,
+        "dec": -11.16,
+        "mag": 0.97,
+        "color": "#c8e2ff",
+        "dist": "250 ly",
+        "spectral": "B1III-IV",
+        "info": "A tight binary star system."
+    },
+    {
+        "name": "Pollux",
+        "ra": 7.75,
+        "dec": 28.02,
+        "mag": 1.14,
+        "color": "#ffd2a1",
+        "dist": "34 ly",
+        "spectral": "K0III",
+        "info": "Has a confirmed exoplanet."
+    },
+    {
+        "name": "Fomalhaut",
+        "ra": 22.96,
+        "dec": -29.62,
+        "mag": 1.16,
+        "color": "#f2f2ff",
+        "dist": "25 ly",
+        "spectral": "A3V",
+        "info": "Surrounded by a massive debris disk."
+    },
+    {
+        "name": "Deneb",
+        "ra": 20.69,
+        "dec": 45.28,
+        "mag": 1.25,
+        "color": "#c8e2ff",
+        "dist": "2600 ly",
+        "spectral": "A2Ia",
+        "info": "One of the most luminous stars known."
+    },
+    {
+        "name": "Mimosa",
+        "ra": 12.78,
+        "dec": -59.68,
+        "mag": 1.25,
+        "color": "#c8e2ff",
+        "dist": "280 ly",
+        "spectral": "B0.5III",
+        "info": "A variable Cepheid star."
+    },
+    {
+        "name": "Regulus",
+        "ra": 10.13,
+        "dec": 11.96,
+        "mag": 1.35,
+        "color": "#c8e2ff",
+        "dist": "79 ly",
+        "spectral": "B8IVn",
+        "info": "The heart of the Lion."
+    },
+    {
+        "name": "Adhara",
+        "ra": 6.97,
+        "dec": -28.97,
+        "mag": 1.5,
+        "color": "#c8e2ff",
+        "dist": "430 ly",
+        "spectral": "B2II",
+        "info": "Emits more extreme UV light than any other."
+    },
+    {
+        "name": "Castor",
+        "ra": 7.57,
+        "dec": 31.88,
+        "mag": 1.58,
+        "color": "#c8e2ff",
+        "dist": "51 ly",
+        "spectral": "A1V",
+        "info": "A complex sextuple star system."
+    },
+    {
+        "name": "Gacrux",
+        "ra": 12.52,
+        "dec": -57.11,
+        "mag": 1.63,
+        "color": "#ffb56c",
+        "dist": "88 ly",
+        "spectral": "M3.5III",
+        "info": "A red giant in the Southern Cross."
+    },
+    {
+        "name": "Shaula",
+        "ra": 17.56,
+        "dec": -37.1,
+        "mag": 1.62,
+        "color": "#c8e2ff",
+        "dist": "570 ly",
+        "spectral": "B1.5IV",
+        "info": "The stinger of the Scorpion."
+    }
+]

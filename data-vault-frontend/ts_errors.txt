@@ -1,0 +1,35 @@
+﻿src/components/contracts/ExchangeHub.tsx(166,34): error TS2304: Cannot find name 'Brain'.
+src/components/dashboard/exploration-canvas/AtlasSearch.tsx(283,81): error TS2322: Type 'string' is not assignable to type 'never'.
+src/components/dashboard/exploration-canvas/AtlasSearch.tsx(283,105): error TS2322: Type '{ color: string; }' is not assignable to type 'never'.
+src/components/dashboard/exploration-canvas/BottomDock.tsx(184,23): error TS2322: Type 'string' is not assignable to type 'never'.
+src/components/dashboard/exploration-canvas/BottomDock.tsx(184,57): error TS2322: Type '{ color: string; }' is not assignable to type 'never'.
+src/components/dashboard/exploration-canvas/CanvasSidebar.tsx(146,31): error TS2322: Type 'string' is not assignable to type 'never'.
+src/components/dashboard/exploration-canvas/MainView.tsx(165,27): error TS2322: Type 'string' is not assignable to type 'never'.
+src/components/dashboard/exploration-canvas/stream/StreamGraph.tsx(436,39): error TS2322: Type 'string' is not assignable to type 'never'.
+src/components/dashboard/exploration-canvas/TopBar.tsx(91,39): error TS2322: Type 'string' is not assignable to type 'never'.
+src/components/dashboard/mode-controls.tsx(85,35): error TS2322: Type 'string' is not assignable to type 'never'.
+src/components/home/BirthSky.tsx(444,14): error TS2741: Property 'args' is missing in type '{ attach: string; count: number; array: Float32Array<ArrayBuffer>; itemSize: number; }' but required in type 'Mutable<Overwrite<Partial<Overwrite<BufferAttribute<BufferAttributeEventMap>, MathProps<BufferAttribute<BufferAttributeEventMap>> & ReactProps<...>>>, Omit<...>>>'.
+src/components/home/BirthSky.tsx(445,14): error TS2741: Property 'args' is missing in type '{ attach: string; count: number; array: Float32Array<ArrayBuffer>; itemSize: number; }' but required in type 'Mutable<Overwrite<Partial<Overwrite<BufferAttribute<BufferAttributeEventMap>, MathProps<BufferAttribute<BufferAttributeEventMap>> & ReactProps<...>>>, Omit<...>>>'.
+src/components/home/BirthSky.tsx(452,14): error TS2741: Property 'args' is missing in type '{ attach: string; count: number; array: Float32Array<ArrayBuffer>; itemSize: number; }' but required in type 'Mutable<Overwrite<Partial<Overwrite<BufferAttribute<BufferAttributeEventMap>, MathProps<BufferAttribute<BufferAttributeEventMap>> & ReactProps<...>>>, Omit<...>>>'.
+src/components/home/BirthSky.tsx(453,14): error TS2741: Property 'args' is missing in type '{ attach: string; count: number; array: Float32Array<ArrayBuffer>; itemSize: number; }' but required in type 'Mutable<Overwrite<Partial<Overwrite<BufferAttribute<BufferAttributeEventMap>, MathProps<BufferAttribute<BufferAttributeEventMap>> & ReactProps<...>>>, Omit<...>>>'.
+src/components/home/BirthSky.tsx(460,14): error TS2741: Property 'args' is missing in type '{ attach: string; count: number; array: Float32Array<ArrayBuffer>; itemSize: number; }' but required in type 'Mutable<Overwrite<Partial<Overwrite<BufferAttribute<BufferAttributeEventMap>, MathProps<BufferAttribute<BufferAttributeEventMap>> & ReactProps<...>>>, Omit<...>>>'.
+src/components/home/BirthSky.tsx(461,14): error TS2741: Property 'args' is missing in type '{ attach: string; count: number; array: Float32Array<ArrayBuffer>; itemSize: number; }' but required in type 'Mutable<Overwrite<Partial<Overwrite<BufferAttribute<BufferAttributeEventMap>, MathProps<BufferAttribute<BufferAttributeEventMap>> & ReactProps<...>>>, Omit<...>>>'.
+src/components/home/BirthSky.tsx(468,14): error TS2741: Property 'args' is missing in type '{ attach: string; count: number; array: Float32Array<ArrayBuffer>; itemSize: number; }' but required in type 'Mutable<Overwrite<Partial<Overwrite<BufferAttribute<BufferAttributeEventMap>, MathProps<BufferAttribute<BufferAttributeEventMap>> & ReactProps<...>>>, Omit<...>>>'.
+src/components/home/BirthSky.tsx(469,14): error TS2741: Property 'args' is missing in type '{ attach: string; count: number; array: Float32Array<ArrayBuffer>; itemSize: number; }' but required in type 'Mutable<Overwrite<Partial<Overwrite<BufferAttribute<BufferAttributeEventMap>, MathProps<BufferAttribute<BufferAttributeEventMap>> & ReactProps<...>>>, Omit<...>>>'.
+src/components/insights/SignalsView.tsx(68,49): error TS2322: Type '{ hidden: { opacity: number; y: number; }; show: { opacity: number; y: number; transition: { duration: number; ease: number[]; }; }; }' is not assignable to type 'Variants'.
+  Property 'show' is incompatible with index signature.
+    Type '{ opacity: number; y: number; transition: { duration: number; ease: number[]; }; }' is not assignable to type 'Variant'.
+      Type '{ opacity: number; y: number; transition: { duration: number; ease: number[]; }; }' is not assignable to type 'TargetAndTransition'.
+        Type '{ opacity: number; y: number; transition: { duration: number; ease: number[]; }; }' is not assignable to type '{ transition?: Transition<any> | undefined; transitionEnd?: ResolvedValues$1 | undefined; }'.
+          Types of property 'transition' are incompatible.
+            Type '{ duration: number; ease: number[]; }' is not assignable to type 'Transition<any> | undefined'.
+              Type '{ duration: number; ease: number[]; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+                Type '{ duration: number; ease: number[]; }' is not assignable to type 'ValueAnimationTransition<any>'.
+                  Types of property 'ease' are incompatible.
+                    Type 'number[]' is not assignable to type 'Easing | Easing[] | undefined'.
+                      Type 'number[]' is not assignable to type 'EasingFunction | Easing[]'.
+                        Type 'number[]' is not assignable to type 'Easing[]'.
+                          Type 'number' is not assignable to type 'Easing'.
+src/components/layout/sidebar.tsx(94,17): error TS2322: Type 'string' is not assignable to type 'never'.
+src/local-brain/test-brain.ts(41,40): error TS2554: Expected 2 arguments, but got 1.
+src/local-brain/test-brain.ts(49,44): error TS2554: Expected 2 arguments, but got 1.
