@@ -23,7 +23,7 @@ export class OllamaClient {
       let fullText = '';
 
       if (response.body) {
-        // @ts-ignore - Node.js native fetch body is async iterable
+        // @ts-expect-error - Node.js native fetch body is async iterable
         for await (const chunk of response.body) {
           const textChunk = decoder.decode(chunk, { stream: true });
           const lines = textChunk.split('\n').filter(l => l.trim() !== '');

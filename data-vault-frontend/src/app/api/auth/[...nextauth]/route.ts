@@ -40,15 +40,25 @@ providers.push(
     })
 );
 
-const handler = NextAuth({
+const authOptions = {
     providers,
     session: {
-        strategy: "jwt",
+        strategy: "jwt" as const,
     },
     pages: {
         signIn: '/login',
     },
     secret: process.env.NEXTAUTH_SECRET || "at-least-32-characters-long-secret",
-});
+};
 
-export { handler as GET, handler as POST };
+const handler = NextAuth(authOptions);
+
+export async function GET(req: Request, props: { params: Promise<any> }) {
+    const params = await props.params;
+    return handler(req, { params });
+}
+
+export async function POST(req: Request, props: { params: Promise<any> }) {
+    const params = await props.params;
+    return handler(req, { params });
+}
