@@ -42,7 +42,6 @@ export class SpiderWebLayoutStrategy implements LayoutStrategy {
             Math.sin(angle) * radius
           ),
           velocity: new THREE.Vector3(0, 0, 0),
-          mass: n.mass,
           isVisible: true,
           opacity: 1.0
         });
