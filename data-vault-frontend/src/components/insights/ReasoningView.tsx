@@ -65,7 +65,7 @@ export function ReasoningView({ insights }: ReasoningViewProps) {
                                 <span className="text-[10px] font-black text-accent uppercase tracking-tighter">Model conclusion</span>
                             </div>
                             <p className="text-[12px] text-label-tertiary italic">
-                                "This synthesis identifies a high-engagement profile with a specialized technical focus, currently hindered by metadata gaps but ready for niche recommendation engine training."
+                                &quot;This synthesis identifies a high-engagement profile with a specialized technical focus, currently hindered by metadata gaps but ready for niche recommendation engine training.&quot;
                             </p>
                         </div>
                     </GlassCard>
@@ -89,7 +89,7 @@ function AnswerBlock({ q, a, icon: Icon, color }: any) {
                 <Icon className="w-4 h-4" />
                 <h4 className="text-[13px] font-black uppercase tracking-widest">{q}</h4>
             </div>
-            <p className="text-[14px] text-label-secondary leading-relaxed italic">"{a}"</p>
+            <p className="text-[14px] text-label-secondary leading-relaxed italic">&quot;{a}&quot;</p>
         </GlassCard>
     );
 }

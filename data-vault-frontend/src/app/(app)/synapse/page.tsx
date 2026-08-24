@@ -1,13 +1,13 @@
 'use client'
 
-import { SynapseEngine } from '@/components/synapse/SynapseEngine';
+import { NotebookMindmap } from '@/components/synapse/NotebookMindmap';
 
 export default function SynapsePage() {
   return (
-    // absolute inset-0 escapes the layout padding wrapper so the graph
-    // fills the full available canvas area — same pattern as History page
-    <div className="absolute inset-0 overflow-hidden bg-[#050505]">
-      <SynapseEngine />
+    // We override the layout paddings by using absolute inset-0 
+    // to fill the screen like NotebookLM
+    <div className="absolute inset-0 overflow-hidden bg-[#111318]">
+      <NotebookMindmap />
     </div>
   )
 }
